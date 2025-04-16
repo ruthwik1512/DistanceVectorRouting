@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distance Vector Routing Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Distance Vector Routing Simulator</h1>
+        
+        <div class="controls">
+            <button id="add-router">Add Router</button>
+            <button id="delete-router">Delete Selected Router</button>
+            <button id="add-link">Add Link</button>
+            <button id="find-path">Find Path</button>
+            <button id="run-dvr">Run DVR Algorithm</button>
+            <button id="reset">Reset</button>
+        </div>
+        
+        <div class="simulation-area">
+            <div id="network-canvas"></div>
+            <div id="status-panel">
+                <h3>Status</h3>
+                <div id="status-message">Simulation ready. Add routers and links or run DVR.</div>
+                <div id="iteration-info"></div>
+                
+                <div id="routing-tables-container">
+                    <h4>Current Routing Tables</h4>
+                    <div id="all-routing-tables"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="router-popup" class="popup">
+            <div class="popup-content">
+                <span class="close-popup">&times;</span>
+                <h3 id="router-popup-title">Router Information</h3>
+                <div id="routing-table-container"></div>
+            </div>
+        </div>
+        
+        <div id="link-popup" class="popup">
+            <div class="popup-content">
+                <span class="close-popup">&times;</span>
+                <h3>Add Link</h3>
+                <div class="form-group">
+                    <label for="link-from">From Router:</label>
+                    <select id="link-from"></select>
+                </div>
+                <div class="form-group">
+                    <label for="link-to">To Router:</label>
+                    <select id="link-to"></select>
+                </div>
+                <div class="form-group">
+                    <label for="link-cost">Cost:</label>
+                    <input type="number" id="link-cost" min="1" value="1">
+                </div>
+                <button id="confirm-add-link">Add Link</button>
+            </div>
+        </div>
+        
+        <div id="path-popup" class="popup">
+            <div class="popup-content">
+                <span class="close-popup">&times;</span>
+                <h3>Find Path</h3>
+                <div class="form-group">
+                    <label for="path-from">From Router:</label>
+                    <select id="path-from"></select>
+                </div>
+                <div class="form-group">
+                    <label for="path-to">To Router:</label>
+                    <select id="path-to"></select>
+                </div>
+                <button id="confirm-find-path">Find Path</button>
+            </div>
+        </div>
+        
+        <div id="convergence-popup" class="popup">
+            <div class="popup-content">
+                <span class="close-popup">&times;</span>
+                <h3>Algorithm Converged!</h3>
+                <p id="convergence-message"></p>
+                <div class="convergence-info">
+                    <p><strong>Total Iterations:</strong> <span id="convergence-iterations"></span></p>
+                    <p><strong>Final State:</strong> All routers have optimal routes to every reachable destination.</p>
+                </div>
+                <button id="confirm-convergence">OK</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html> 
